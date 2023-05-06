@@ -1,0 +1,42 @@
+.rightbar-container{
+    flex: 4.5;
+}
+
+.rightbar-wrapper{
+    padding: 20px 0 20px 0 0;
+}
+.weddingday-container{
+display: flex;
+align-items: center;
+}
+
+.weddingdayImage{
+    width: 20px;
+    margin: 50px;
+    padding: 60px;
+    height: 40px;
+    margin-right: 10px;
+}
+.weddingday text{
+    text-align: right;
+    text-decoration: overline;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.rightbarAD{
+    width: 100px;
+    border-radius: 15px;
+  margin: 25px 0;
+
+}
+.rightbartitle{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.ShowFriendlist{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

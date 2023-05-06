@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    background-color: lightblue;
+
+}
+.message-container{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    
+    
+}
+.message-top{
+    display: flex;
+}
+.messsage-img{
+    width: 32px;
+    height: 30px;
+    border-radius: 40%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+.textmessage{
+    padding: 10px;
+    border-radius: 20px;
+    background-color:darkgreen;
+    color: white;
+    max-width: 400px;
+
+}
+.textatbottom{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+
+
+

@@ -1,0 +1,83 @@
+.container{
+    background-color: white;
+}
+.topbar-container{
+    margin-top: 100px;
+    height: 50px;
+    width: 100%;
+    background-color:green ;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index:999;
+
+}
+
+.topbar-left{
+ flex: 3;
+}
+
+.logo{
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: whitesmoke;
+    cursor: pointer;
+
+}
+.topbar-centre{
+    flex: 5;
+}
+.search-bar{
+    width: 200px;
+    height: 30px;
+    margin-right: 10px;
+    padding-top:10px ;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items:center;
+}
+
+.search-icon{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.searchInput:focus{
+    outline: none;
+
+}
+
+.topbar-right{
+    flex: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color:black;
+}
+
+.topbariconitems{
+   display: flex;
+}
+
+.topbariconitems{
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+}
+.topbariconbatch{
+    width: 20px;
+    height: 20px;
+    background-color: lightgrey;
+    border-radius: 50px;
+    color: grey;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+
+}

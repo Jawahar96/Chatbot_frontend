@@ -1,0 +1,18 @@
+.home-container{
+    display: flex;
+    width: 100%;
+}
+.contact-list{
+    margin: 10px;
+    padding-bottom: 20px;
+   
+    background-color: lightblue;
+
+}
+.contact-list:hover{
+    background-color: blue;
+}
+.btn-btn-btn-sm-warning{
+    
+    cursor: pointer;
+}

@@ -1,0 +1,20 @@
+.chatdata-container{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px ;
+}
+.chatdata-container :hover{
+    background-color: rgb(red, green, blue);
+}
+.chatdata-Img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-right: 20px;
+}
+.chatdataName{
+    font-weight: 300;
+}

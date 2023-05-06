@@ -1,0 +1,31 @@
+.container{
+    background-color: lightcyan;
+    margin:  10px 0 10px 0;
+    padding: 20px;
+
+}
+.rightbarfriend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.rightbar-profilecontainer{
+    margin-right: 20px;
+    position: relative;
+}
+.rightprofileimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+
+}
+
+.rightbaronline{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: lavenderblush;
+    position: absolute;
+    border: 2px solid whitesmoke; 
+}
