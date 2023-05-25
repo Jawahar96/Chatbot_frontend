@@ -10,9 +10,10 @@ const User =useContext(ChatUsers)
 useEffect((username)=>{
     const scrollpost =  async()=>{
         const res = username
+        console.log(res);
     }
 },[])
-
+ 
 let users= axios.get('')
 
         

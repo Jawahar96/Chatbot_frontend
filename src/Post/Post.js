@@ -19,7 +19,7 @@ const users =useContext(ChatUsers)
                         <img className='postProfileImg' src={user.image} alt='' />
                     </Link>
                     <span>{user.username}</span>
-                    <span>{format()}</span>
+                    
                 </div>
 
             </div>

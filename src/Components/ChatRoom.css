@@ -31,10 +31,3 @@
 }
 
 
-@media screen and (max-width: 768px) {
-    .chatOnlineName {
-      display: none;
-    }
-  }
-
-

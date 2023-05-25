@@ -6,11 +6,12 @@ function ChatData(currentuser,m) {
 const [userdata,setUserdata]=useState([])
 const [chatdata,setChatdata] =useState([])
 
-const image = process.env.ReactImage
+const image2 = process.env.ReactImage2
 
 
 useEffect(()=>{
     const userId =chatdata.find((m)=> m !== currentuser._id);
+    // setChatdata(userId.data)
    
     const getuser =async ()=>{
         try{
@@ -23,7 +24,7 @@ useEffect(()=>{
 
     };
     getuser() ; 
-},[])
+},[currentuser,chatdata])
     
 
     
@@ -34,9 +35,12 @@ useEffect(()=>{
   return (
     <div>
         <div className='chatdata-container'>
-           <img className='chatdata-Img'   src={userdata ?.Image ?  image + userdata.image : image +"Untitled.jpeg"} alt=''/>
+        {userdata.map(()=>{
+            
+        })}
+           <img className='chatdata-Img'   src={userdata ?.profile ?  image2 + userdata.profile : image2 +"image.png"} alt=''/>
  </div>
- <span className='chatdataName'></span>
+ <span className='chatdataName'>{userdata.username}</span>
 
     </div>
   )
