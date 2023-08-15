@@ -1,38 +1,58 @@
-.container{
-    display: flex;
-    background-color: lightblue;
+.container {
+
+    background-color: lightgreen;
 
 }
-.message-container{
+
+.message-container {
+    display: flex;
+    flex-direction: column;
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
-    
-    
+    margin-top: 20px;
+
+
+
 }
-.message-top{
+
+.message-top {
     display: flex;
 }
-.messsage-img{
+
+.messsage-img {
     width: 32px;
-    height: 30px;
-    border-radius: 40%;
+    height: 32px;
+    border-radius: 50%;
     margin-right: 10px;
     object-fit: cover;
 }
-.textmessage{
+
+.message-text {
     padding: 10px;
     border-radius: 20px;
-    background-color:darkgreen;
+    background-color: darkgreen;
     color: white;
     max-width: 400px;
 
 }
-.textatbottom{
+
+.textatbottom {
     font-size: 12px;
     margin-top: 10px;
 }
 
+.message-bottom {
+    font-size: 15px;
+    margin-top: 10px;
+}
 
+.message-self {
+    align-items: flex-end;
 
+}
 
+.message-self .message-text {
+    background-color: lightgreen;
+    color: black;
+}

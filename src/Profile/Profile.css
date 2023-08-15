@@ -51,3 +51,19 @@
 .profile-bottom{
     display: flex;
 }
+
+.rightbarfriend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.rightbar-profilecontainer{
+    margin-right: 20px;
+    position: relative;
+}
+.rightprofileimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+}

@@ -2,9 +2,11 @@ import { Chat, Search,Person ,NotificationAdd } from '@mui/icons-material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Topbar.css'
+import { useState } from 'react'
 
 function Topbar() {
 
+    const [user,setUser]=useState([])
   return (
     <div>
     
@@ -41,8 +43,12 @@ function Topbar() {
                 <span className='topbariconitem '></span>
             </div>
         </div>
-        {/* <Link to ={`/profile/${user.username}`} */}
-    </div>
+        <Link to ={`/profile/${user.username}`}>
+            <img src={user.profile?Chat + user.profile:Chat + "image.png"  }  alt='' className='topbar-image'/>
+        </Link>
+        </div>
+    
+  
     
   )
 }

@@ -18,3 +18,4 @@ export const chatdata =[
     },
 ]
     
+export default chatdata

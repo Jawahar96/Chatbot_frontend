@@ -21,7 +21,7 @@ useEffect(()=>{
         catch(error){
             console.log(error);
         }
-
+ 
     };
     getuser() ; 
 },[currentuser,chatdata])
@@ -35,10 +35,12 @@ useEffect(()=>{
   return (
     <div>
         <div className='chatdata-container'>
+        <img className='chatdata-image ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbGKvdoUGFGwxUoFxrHWVn-NF_UODJAWkK-jc9II2MFA&s' alt='' />
+        <span className='chatdata-name '>{userdata.username}</span>
         {userdata.map(()=>{
             
         })}
-           <img className='chatdata-Img'   src={userdata ?.profile ?  image2 + userdata.profile : image2 +"image.png"} alt=''/>
+           
  </div>
  <span className='chatdataName'>{userdata.username}</span>
 
