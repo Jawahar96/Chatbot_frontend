@@ -18,27 +18,28 @@ function ChatMessanger() {
     const [useronline, setUserOnline] = useState([])
     const [arrivalmessage, setArrivalmessage] = useState([])
     const [newMessage, setNewmessage] = useState([])
-    const scrollRef=useRef()
-    const socket =useRef(io("ws://localhost:3001"))
+    const scrollRef = useRef()
+    const socket = useRef(io("ws://localhost:3001"))
     let m,
 
 
 
-      
-    // const [users] = useContext(ChatUsers)
-
-
-
-    useEffect(() => { 
-        Socket.current.on("getMessage", (data) => {
-            setArrivalmessage({
-                sender: data.senderId,
-                text: data.text,
-                created_At: Date.now()
+        useEffect(() => {
+          
+            Socket.current.on("getMessage", (data) => {
+                setArrivalmessage({
+                    sender: data.senderId,
+                    text: data.text,
+                    created_At: Date.now()
+                })
+            
             })
+        }, [user]);-
 
-        })
-    }, [user])
+        useEffect(()=>{
+            arrivalmessage && currentChat?.member.includes(arrivalmessage.sender) && 
+            setMessage((prev)=>[...prev,arrivalmessage])
+        },[arrivalmessage,currentChat])
 
     useEffect(() => {
         Socket.current.emit('user')
@@ -55,10 +56,10 @@ function ChatMessanger() {
 
 
 
-   useEffect(()=>{
-socket.current=io("ws://localhost:3001");
+    useEffect(() => {
+        socket.current = io("ws://localhost:3001");
 
-   },[])
+    }, [])
 
     useEffect(() => {
         const getMessage = () => {
@@ -93,10 +94,26 @@ socket.current=io("ws://localhost:3001");
         }
         setUser(chat)
         if (chat !== "")
-            setChat(user)   
+            setChat(user)
 
     }
 
+    const receiverid = currentChat.members.find(member => member !== user._id)
+
+    socket.current.emit("sendMessages", {
+        senderId: user._id,
+        receiverid,
+        terxt: newMessage
+    })
+
+    try {
+        const res = await axios.post("/messages", message)
+        setMessage([...message, res.data]);
+        setNewmessage("")
+    } catch (error) {
+        console.log(error);
+
+    }
 
 
 
@@ -122,27 +139,27 @@ socket.current=io("ws://localhost:3001");
                         <div className='Box-wrapper'>
 
                             <div className='chatboxtop'>
-                             <Message />
-                             <Message  />
-                             <Message />
-                                
-                             
+                                <Message />
+                                <Message />
+                                <Message />
+
+
                             </div>
 
                             <div className='chatbox-bottom'>
-                           <textarea  className='chatmessage-input' placeholder='Text here ' onChange={(e)=>setNewmessage(e.target.value)}></textarea>
-                           <Button className='chatsubmit-button' >SEND</Button>
-                       
-                            
+                                <textarea className='chatmessage-input' placeholder='Text here ' onChange={(e) => setNewmessage(e.target.value)}></textarea>
+                                <Button className='chatsubmit-button' >SEND</Button>
+
+
+
+                            </div>
+
 
                         </div>
-                        
-                      
-                        </div>
-                       
+
                     </div>
-                    
-                   
+
+
                 </div>
                 <span className='conversation-text'>Open the chat and start the chating process</span>
                 <div className='online-chat'>online

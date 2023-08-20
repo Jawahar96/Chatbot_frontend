@@ -36,15 +36,24 @@ useEffect(()=>{
     <div>
         <div className='chatdata-container'>
         <img className='chatdata-image ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbGKvdoUGFGwxUoFxrHWVn-NF_UODJAWkK-jc9II2MFA&s' alt='' />
-        <span className='chatdata-name '>{userdata.username}</span>
+    <div className='chatonlinebadge' >
+        <span className='chatonlinename'>Kennedy</span>
+    </div>
+<div className='chatonlinefriend'>
+    
+</div>
+    <span className='chatdata-name '>{userdata.username}</span>
+
         {userdata.map(()=>{
             
         })}
+           
            
  </div>
  <span className='chatdataName'>{userdata.username}</span>
 
     </div>
+    
   )
 }
 
