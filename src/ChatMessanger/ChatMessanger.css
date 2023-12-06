@@ -40,7 +40,7 @@
 .chatmessage-input{
     width: 80%;
     height: 90px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .chatsubmit-button{
@@ -48,6 +48,8 @@
     height: 40px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    background-color: black;
 }
 .message-input{
     width: 40%;
@@ -60,8 +62,10 @@
 }
 .Menu-Wrapper,.onlinechat-wrapper,.onlinechat-wrapper
 {
+   display: flex;
    padding: 10px;
    height: 100%;
+flex-direction: column;
   
 }
 

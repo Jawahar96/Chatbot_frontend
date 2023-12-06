@@ -1,13 +1,13 @@
-import { Button } from '@mui/material'
-import React, { useState, useEffect, useContext, useRef } from 'react'
-import Message from '../Components/Messages/Message'
-import './ChatMessanger.css'
-import ChatRoom from '../Components/ChatRoom'
-import { Socket } from 'socket.io-client'
-import { io } from 'socket.io-client'
-import axios from 'axios'
+import { Button } from '@mui/material';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import Message from '../Components/Messages/Message';
+import './ChatMessanger.css';
+import ChatRoom from '../Components/ChatRoom';
+import { Socket } from 'socket.io-client';
+import { io } from 'socket.io-client';
+import axios from 'axios';
 import Topbar from '../Topbar'
-import ChatData from '../Components/ChatData/ChatData'
+import ChatData from '../Components/ChatData/ChatData';
 
 
 
@@ -19,33 +19,45 @@ function ChatMessanger() {
     const [arrivalmessage, setArrivalmessage] = useState([])
     const [newMessage, setNewmessage] = useState([])
     const scrollRef = useRef()
-    const socket = useRef(io("ws://localhost:3001"))
-    let m,
+    const socket = useRef(io("ws://localhost:3001"));
+    const [currentchat, setCurrentchat] = useState([null])
+    const [friends,setFriends]=useState([])
+    const [onlinefriend,setOnlineFriend]=useState([])
+    const[members,setMembers]=useState([])
+    let m;
 
 
+useEffect (()=>{
+    const getfriendlist=async ()=>{
+        try{
+            const result = await axios.get('/chatdata'+user._id)
+        setFriends(result.data)
 
-        useEffect(() => {
-          
-            Socket.current.on("getMessage", (data) => {
-                setArrivalmessage({
-                    sender: data.senderId,
-                    text: data.text,
-                    created_At: Date.now()
-                })
-            
-            })
-        }, [user]);-
 
-        useEffect(()=>{
-            arrivalmessage && currentChat?.member.includes(arrivalmessage.sender) && 
-            setMessage((prev)=>[...prev,arrivalmessage])
-        },[arrivalmessage,currentChat])
+        }catch(error){
+            console.log(error);
+        }
+        
+
+    }
+    getfriendlist();
+
+},[user._id])
+
+    
+
+        
+
+    useEffect(() => {
+        arrivalmessage && currentchat?.member.includes(arrivalmessage.sender) &&
+            setMessage((prev) => [...prev, arrivalmessage])
+    }, [arrivalmessage, chat])
 
     useEffect(() => {
         Socket.current.emit('user')
 
 
-        if (arrivalmessage === user.chat?.includes(arrivalmessage.sender) && setArrivalmessage((Prev) => [...Prev, arrivalmessage]))
+        if (arrivalmessage === user.currentchatchat?.includes(arrivalmessage.sender) && setArrivalmessage((Prev) => [...Prev, arrivalmessage]))
 
 
             setChat(chat.data)
@@ -58,8 +70,17 @@ function ChatMessanger() {
 
     useEffect(() => {
         socket.current = io("ws://localhost:3001");
+        Socket.current.on("getMessage", (data) => {
+            setArrivalmessage({
+                sender: data.senderId,
+                text: data.text,
+                created_At: Date.now()
+            })
 
-    }, [])
+        })
+    }, [user]);
+
+  
 
     useEffect(() => {
         const getMessage = () => {
@@ -75,13 +96,17 @@ function ChatMessanger() {
     }, [user]);
 
 
+   
+
     useEffect(() => {
         let clients
         Socket.current.emit("addClient", user._id);
         Socket.current.on("getClient", (clients))
-        setUserOnline(user.filter((f) => clients.some((u) => u.clientId === f))
+        setUserOnline(user.following.filter((f) => clients.some((u) => u.clientId === f))
+
         );
     }, [user])
+    console.log(user);
 
     const hanldesubmit = (event) => {
 
@@ -95,25 +120,37 @@ function ChatMessanger() {
         setUser(chat)
         if (chat !== "")
             setChat(user)
+        hanldesubmit()
 
     }
 
-    const receiverid = currentChat.members.find(member => member !== user._id)
+    const receiverid = currentchat.members.find(member => member !== user._id)
 
     socket.current.emit("sendMessages", {
         senderId: user._id,
         receiverid,
-        terxt: newMessage
+        text: newMessage
     })
 
-    try {
-        const res = await axios.post("/messages", message)
-        setMessage([...message, res.data]);
-        setNewmessage("")
-    } catch (error) {
-        console.log(error);
 
-    }
+    useEffect(() => {
+        const message = async () => {
+            try {
+                const res = await axios.post("/messages", message)
+                setMessage([...message, res.data]);
+                setNewmessage("")
+            } catch (error) {
+                console.log(error);
+
+            }
+
+        }
+    })
+
+    useEffect(()=>{
+        scrollRef.current?.scrollIntoView({behavior : "smooth"})
+    },[message])
+
 
 
 
@@ -125,9 +162,9 @@ function ChatMessanger() {
                 <div className='chat-menu'>
                     <div className='Menu-Wrapper'>
                         <input placeholder='Search for Users' className='Menu-Input'></input>
+                        {/* <ChatData />
                         <ChatData />
-                        <ChatData />
-                        <ChatData />
+                        <ChatData /> */}
                         {chat.map((c) => {
 
                             return <div onClick={() => { setChat(c) }} />
@@ -141,7 +178,7 @@ function ChatMessanger() {
                             <div className='chatboxtop'>
                                 <Message />
                                 <Message />
-                                <Message />
+                                <Message />   
 
 
                             </div>
@@ -164,7 +201,7 @@ function ChatMessanger() {
                 <span className='conversation-text'>Open the chat and start the chating process</span>
                 <div className='online-chat'>online
                     <div className='onlinechat-wrapper'>
-                        <ChatRoom useronline={useronline} setChat={setChat} />
+                        <ChatData useronline={useronline} currentId={user._id} setCurrentchat={setCurrentchat} />
 
 
                     </div>

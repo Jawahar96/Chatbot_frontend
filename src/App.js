@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Chat from './Components/Chat';
@@ -16,6 +16,7 @@ import Register from './Register/Register';
 import Login from './Login/Login';
 import Online from './Online/Online';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,9 +31,10 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/chatroom' element={<ChatRoom />} />
+            <Route path='/chatroom' element={<ChatRoom />}/>
             <Route path='/chat' element={<Chat />} />
             <Route path='/message' element={<Message />} />
+          
             <Route path='/chatdata' element={<ChatData />} />
             <Route path='/scroll' element={<MesssageScroll />} />
             <Route path='/chatmessenger' element={<ChatMessanger />} />

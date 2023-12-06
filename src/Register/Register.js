@@ -15,13 +15,13 @@ function Register() {
     const mobileno = useRef(0)
   const [user,setUser]=useState([])
 
-    const handleclick= async(e)=>{
+    const handleClick= async(e)=>{
         
         let user = e.preventDefault()
         
         
         console.log(user);
-        if(confirmpassword.current.value!== password .current.value){
+        if(confirmpassword.current.valueOf!== password .current.valueOf){
             confirmpassword.current.setCustomValidity("Strong Password contains")
         }else if (confirmpassword){
             confirmpassword.current.setCustomValidity("Password does not match")
@@ -72,7 +72,7 @@ function Register() {
 
                     </form>
                 </div>
-                <button  onSubmit={()=>handleclick()} className='register-button' type='submit '>Register </button>
+                <button  onSubmit={()=>handleClick()} className='register-button' type='submit '>Register </button>
                 
               {/* <Button className='registor-button' type='submit'>Register</Button> */}
 

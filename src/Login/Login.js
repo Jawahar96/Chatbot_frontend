@@ -45,7 +45,7 @@ function Login() {
     e.preventDefault()
 
     if (login == "" && Password == "") {
-      console.log("LOgin successfully");
+      console.log("Login successfully");
       setLogin(email)
     }
 
