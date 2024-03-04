@@ -34,8 +34,11 @@ function Login() {
         setLogin(!login)
         console.log("Login credential doesn't match");
 
+}
+else {
+  console.log(password);
 
-      }
+}
 
     }
   }

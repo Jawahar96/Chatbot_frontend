@@ -118,9 +118,9 @@ useEffect (()=>{
             chatdataId: user._id
         }
         setUser(chat)
-        if (chat !== "")
+        if (chat == "")
             setChat(user)
-        hanldesubmit()
+        hanldesubmit(setCurrentchat)
 
     }
 
