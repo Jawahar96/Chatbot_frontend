@@ -15,6 +15,7 @@ useEffect((username)=>{
 },[])
  
 let users= axios.get('')
+console.log(users)
 
         
 

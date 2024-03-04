@@ -24,11 +24,13 @@ function Login() {
    
  if (login === "email" && Password === "") {
       setLogin(' ')
+      navigate();
+      
 
       console.log(" Login credential Successfully");
     return false
     } else {
-      if (login !== "email") {
+      if (login == "email") {
         setLogin(!login)
         console.log("Login credential doesn't match");
 
