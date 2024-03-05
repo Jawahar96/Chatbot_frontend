@@ -70,7 +70,7 @@ else {
           </div>
         </div>
         <div className='login-right'>
-          <form className='login-box' onSubmit={handleSubmit}>
+          <form className='login-box' onSubmit={handleSubmit()}>
             <input placeholder='email' type='email' required className='login-input' ref={email} />
             <input placeholder='password' type='password' required className='login-input' ref={Password} />
           </form>
